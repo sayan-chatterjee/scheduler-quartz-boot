@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: hrss-scheduler-service
+  profiles: 
+    active: local
+  cloud: 
+    config:
+      uri: http://localhost:9090
+      
+management:
+  security:
+    enabled: false
