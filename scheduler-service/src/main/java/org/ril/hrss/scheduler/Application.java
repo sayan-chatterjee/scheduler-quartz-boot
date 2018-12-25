@@ -13,10 +13,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableEurekaClient
 @EnableCircuitBreaker
 @SpringBootApplication
-@Import({ObjectMapperUtil.class, RequestControllerAdvice.class})
+@Import({ ObjectMapperUtil.class, RequestControllerAdvice.class })
 public class Application {
-    
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
 }

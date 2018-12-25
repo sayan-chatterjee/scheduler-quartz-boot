@@ -21,28 +21,22 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 public class BatchController {
-    
-    protected static final Logger logger = Logger.getLogger(BatchController.class.getName());
-    
-    @Autowired
-    private BatchService batchService;
-    
-    @RequestMapping(value = "/batch/update", method = RequestMethod.PUT,
-            produces = "application/json")
-    @ApiOperation(value = "Update Batch details", response = String.class)
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Successfully processed request"),
-            @ApiResponse(code = 201, message = "Successfully updated batch details request"),
-            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-            @ApiResponse(code = 403,
-                    message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404,
-                    message = "The resource you were trying to reach is not found")})
-    public ResponseEntity<BatchDetailsMsg> updateBatchDetails(
-            @NotNull @RequestHeader("batchUuid") String batchUuid,
-            @NotNull @RequestParam("batchStatus") String batchStatus) {
-        logger.info("BatchController.updateBatchDetails()");
-        BatchDetailsMsg batchDetailsMsg = batchService.updateBatchDetails(batchUuid, batchStatus);
-        return new ResponseEntity<BatchDetailsMsg>(batchDetailsMsg, HttpStatus.OK);
-        
-    }
+
+	protected static final Logger logger = Logger.getLogger(BatchController.class.getName());
+
+	@Autowired
+	private BatchService batchService;
+
+	@RequestMapping(value = "/batch/update", method = RequestMethod.PUT, produces = "application/json")
+	@ApiOperation(value = "Update Batch details", response = String.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully processed request"),
+			@ApiResponse(code = 201, message = "Successfully updated batch details request"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
+	public ResponseEntity<BatchDetailsMsg> updateBatchDetails(@NotNull @RequestHeader("batchUuid") String batchUuid,
+			@NotNull @RequestParam("batchStatus") String batchStatus) {
+		logger.info("BatchController.updateBatchDetails()");
+		return new ResponseEntity<>(batchService.updateBatchDetails(batchUuid, batchStatus), HttpStatus.OK);
+	}
 }

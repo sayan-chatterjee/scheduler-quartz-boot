@@ -19,28 +19,26 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @ComponentScan("org.ril.hrss.scheduler")
 public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
-    
-    @Bean
-    public Docket candidateApi() {
-        return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("org.ril.hrss.scheduler.api"))
-                .paths(regex("/*.*")).build().apiInfo(metaData());
-    }
-    
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
-    
-    private ApiInfo metaData() {
-        return new ApiInfo("HR SaaS Microservices Framework",
-                "HRSS Scheduler Service API - is a RESTful API that provides Scheduler details of HR SaaS. Below is a list of available REST API calls for Scheduler Service details, ",
-                "1.0", "Terms of service",
-                new Contact("Author", "http://www.ril.com/", "dnyaneshwar.bhirud@zmail.ril.com"),
-                "Apache License Version 2.0", "https://www.apache.org/licenses/LICENSE-2.0");
-    }
-    
+
+	@Bean
+	public Docket candidateApi() {
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("org.ril.hrss.scheduler.api")).paths(regex("/*.*")).build()
+				.apiInfo(metaData());
+	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+	}
+
+	private ApiInfo metaData() {
+		return new ApiInfo("HR SaaS Microservices Framework",
+				"HRSS Scheduler Service API - is a RESTful API that provides Scheduler details of HR SaaS. Below is a list of available REST API calls for Scheduler Service details, ",
+				"1.0", "Terms of service",
+				new Contact("RIL", "http://www.ril.com/", "sayan.chatterjee@ril.com"),
+				"Apache License Version 2.0", "https://www.apache.org/licenses/LICENSE-2.0");
+	}
+
 }

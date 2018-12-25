@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface BatchDetailsRepository extends JpaRepository<BatchDetails, Integer> {
-    
-    @Query("select batchDetails from BatchDetails batchDetails where batchDetails.batchUuid=:batchUuid")
-    public BatchDetails findByBatchUuid(@Param("batchUuid") String batchUuid);
+
+	@Query("select batchDetails from BatchDetails batchDetails where batchDetails.batchUuid=:batchUuid")
+	public BatchDetails findByBatchUuid(@Param("batchUuid") String batchUuid);
 }
